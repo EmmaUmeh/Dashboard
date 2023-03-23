@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import {FiSend,FiAlignJustify, FiXCircle} from 'react-icons/fi';
+import {FiAlignJustify, FiXCircle} from 'react-icons/fi';
 import {MdOutlineDarkMode,MdOutlineLightMode} from 'react-icons/md';
 import { useState } from 'react';
 // import {BiMenuAltRight} from 'react-icons/bi';
 
 const Container = styled.div`
+z-index: 1;
+position: fixed;
 width: 100%;
 background: #FFFFFF;
 padding: 8px 8px 8px 8px;
@@ -14,6 +16,7 @@ box-shadow: 0px 4px 30px 3px rgba(0, 0, 0, 0.25);
 .menubutton{
     display: block;
 }
+
 .logo{
     width:30%;
 }
@@ -79,7 +82,7 @@ function Navbar(user: Userdetails) {
 
                 <UserInfo>
 
-                    <FiSend size="28" className="mr-5"/>                    
+                                      
 
                     <UserInfoImg className='mr-2'>
                         <img src={user.userImage} alt={user.UserAlt}/>

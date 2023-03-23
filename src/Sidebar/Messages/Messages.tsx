@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import {TbHomeShare} from 'react-icons/tb'
+import {AiOutlineMessage} from 'react-icons/ai'
 
 const Container = styled.div`
-margin-top: 50px;
+margin-top: 30px;
 `;
 
-const HomeAlt = styled.div`
+const MessagesAlt = styled.div`
 cursor: pointer;
 display: flex;
 padding: 5px 5px 5px 20px;
@@ -14,14 +14,14 @@ align-items: center;
 color: #2A9D8F;
 `;
 
-export  default function Home() {
+export  default function Messages() {
     return(
         <>
         <Container>
-            <HomeAlt>
-            <TbHomeShare size="28" className="mr-5"/>
-                Home
-            </HomeAlt>
+            <MessagesAlt>
+            <AiOutlineMessage size="28" className="mr-5"/>
+                Messages
+            </MessagesAlt>
 
         </Container>
         </>
