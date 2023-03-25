@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import {MdOutlineCancelPresentation} from 'react-icons/md';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// import Sidebar from "../Sidebar";
+import { useState } from "react";
+// import Greeting from "./Greeting/Greeting";
+import GreetingEveryday from "./Greeting/GreetingEveryday";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
 width: 100%;
@@ -10,13 +12,16 @@ position: relative;
 top: 120px;
 `;
 
-const ContainerChild = styled.div`
+const PaymentFlex = styled.div`
+display: flex;
+justify-content: center;
+margin-left: 180px;
+`;
+
+const PaymentColor = styled.div`
 background: #D1E9E9;
 width: 65%;
-position: relative;
-left: 25%;
 padding: 15px 15px 15px 15px;
-
 `;
 
 const HomeApiAlt = styled.div`
@@ -52,19 +57,35 @@ const Button = styled.button`
 cursor: pointer;
 `;
 
-export  default function HomeApi() {
-    const showToastMessage = () => {
-        toast.success('Notification Deleted!', {
-            position: toast.POSITION.TOP_RIGHT
+const GreetingTime = styled.div`
+display: flex;
+justify-content: center;
+font-size: 48px;
+margin-top: 50px;
+margin-left: 80px;
+font-weight: 500;
 
-        });
-    };
+`;
+
+
+export  default function HomeApi() {
+    // const[cancel, setCancel] = useState(false);
+    const [paymenttime, setPaymentTime] = useState(new Date());
+    const [greet, setGreet] = useState(new Date())
+    
+    setPaymentTime;
+    setGreet;
+
+   
+
     return(
         <>
         <Container>
-        <ToastContainer />
-            <ContainerChild className="childt">
-                    <HomeApiAlt className="homet">
+        {/* <ToastContainer /> */}
+            <PaymentFlex>
+
+                <PaymentColor>
+                <HomeApiAlt className="">
                      
                      <RequestDetails className="pb-5">
                         
@@ -72,7 +93,7 @@ export  default function HomeApi() {
                                 Your payment request has been approved
                             </span>
 
-                            <Button onClick={showToastMessage}>
+                            <Button >
                                 <MdOutlineCancelPresentation size="30"/>
                             </Button>
                            
@@ -80,9 +101,9 @@ export  default function HomeApi() {
 
                     <Paymentdetails>
                         <DateReference>
-                                Payment issued on: Mon Jan 02 2023 04:58:04 GMT-0800 (Pacific Standard Time)
+                                Payment issued on {paymenttime.toString().toLocaleUpperCase()}
                             </DateReference>
-
+ 
                             <SeeDetails className="font-medium">
                                 See Details
                             </SeeDetails>
@@ -90,8 +111,18 @@ export  default function HomeApi() {
 
 
                     </HomeApiAlt>
-            </ContainerChild>
+                </PaymentColor>
+
+          
+               
+            </PaymentFlex>
+
+            <GreetingTime>
+                  {/* <Greeting GreetingDay={"Good Morning"}  GreetingNoon={"Good Afternoon"} GreetingNight={"Good Evening"} /> Emmanuel Umeh */}
+             <GreetingEveryday GreetingDay={"Good Morning"}  GreetingNoon={"Good Afternoon"} GreetingNight={"Good Evening"}/>, Emmanuel Umeh
+            </GreetingTime>
         </Container>
         </>
     )
 }
+
