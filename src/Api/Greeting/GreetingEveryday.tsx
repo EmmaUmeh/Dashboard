@@ -1,22 +1,22 @@
 
 
-// interface GreetingTimer{
-// GreetingDay: string,
-// GreetingNoon: string,
-// GreetingNight:string,
-// }
+interface GreetingTimer{
+GreetingDay: string,
+GreetingNoon: string,
+GreetingNight:string,
+}
 
-export default function GreetingEveryday() {
+export default function GreetingEveryday(greetings: GreetingTimer) {
     var date = new Date();
     var result = date.getHours();
     var finalgreet;
     
     if(result < 12) {
-       finalgreet= "Good Morning"
+       finalgreet= greetings.GreetingDay
     }else if(result >= 12 && result <= 17) {
-       finalgreet= "Good Afternoon"
+       finalgreet= greetings.GreetingNoon
     }else {
-       finalgreet= "Good Evening"
+       finalgreet= greetings.GreetingNight
     }
     
 

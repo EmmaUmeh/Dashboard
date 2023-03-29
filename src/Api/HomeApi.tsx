@@ -172,7 +172,7 @@ animate={cancelout ? hide : ''}
                   {/* <Greeting GreetingDay={"Good Morning"}  GreetingNoon={"Good Afternoon"} GreetingNight={"Good Evening"} /> Emmanuel Umeh */}
             
                 <div className="greetingtxt">
-                    <GreetingEveryday />, Emmanuel Umeh
+                    <GreetingEveryday GreetingDay="Good Morning" GreetingNoon="Good Afternoon" GreetingNight="Good Evening"/>, Emmanuel Umeh
                 </div>
             
             </GreetingTime>
