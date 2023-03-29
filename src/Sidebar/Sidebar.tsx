@@ -18,10 +18,15 @@ import SettingsRouter from "../routerpage/SettingsRouter";
 const Container = styled.div`
 background: #FFFFFF;
 width: 20%;
-height: 100%;
-padding: 100px 5px 5px 5px;
+height: 100vh;
 position: fixed;
+padding: 100px 5px 5px 5px;
 box-shadow: 0px 4px 30px 3px rgba(0, 0, 0, 0.25);
+
+@media screen and (max-width: 500px) {
+    display: none;
+}
+
 `;
 
 const Counter = styled.div`
@@ -64,7 +69,9 @@ export default function Sidebar(){
            </Counter>
 
 
-                <Link to="/">
+
+
+                <Link to="/" className="bg-sky-500 hover:bg-sky-700 ">
                    <HomeRouter />
                 </Link>
                 

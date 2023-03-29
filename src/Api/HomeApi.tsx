@@ -1,21 +1,54 @@
 import styled from "styled-components";
 import {MdOutlineCancelPresentation} from 'react-icons/md';
 import { useState } from "react";
-// import Greeting from "./Greeting/Greeting";
 import GreetingEveryday from "./Greeting/GreetingEveryday";
+import { motion } from "framer-motion";
+// import Greeting from "./Greeting/Greeting";
+// import GreetingEveryday from "./Greeting/GreetingEveryday";
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
-width: 100%;
-position: relative;
-top: 120px;
+padding-top: 140px;
+
+.hidden{
+    display: none;
+}
+
+@media (max-width: 500px) {
+   
+    .greetingtxt{
+        // display: none;
+        font-size: 15px;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+     
+    }
+
+    .paymentscreenmode{
+       
+        margin-left:0px;
+    }
+    .paymentdetails{
+        display: flex;
+        flex-direction: column;
+    }
+
+.paymentcolor{
+    width: 80%;
+}
+
+    }
+
 `;
 
 const PaymentFlex = styled.div`
 display: flex;
 justify-content: center;
 margin-left: 180px;
+
+
 `;
 
 const PaymentColor = styled.div`
@@ -43,7 +76,7 @@ cursor: pointer;
 
 const Paymentdetails = styled.div`
 display: flex;
-justify-content: space-between
+justify-content: space-between;
 `;
 
 const RequestDetails = styled.div`
@@ -60,31 +93,48 @@ cursor: pointer;
 const GreetingTime = styled.div`
 display: flex;
 justify-content: center;
-font-size: 48px;
+font-size: 50px;
 margin-top: 50px;
 margin-left: 80px;
 font-weight: 500;
 
 `;
 
+const hide = {
+    opacity: 0,
+    transitionEnd: {
+      display: "none"
+    }
+  };
+
 
 export  default function HomeApi() {
+
+   
     // const[cancel, setCancel] = useState(false);
     const [paymenttime, setPaymentTime] = useState(new Date());
-    const [greet, setGreet] = useState(new Date())
+    const [greet, setGreet] = useState(new Date());
+    const [cancelout, setCancelout] = useState(false);
+    
+   const CancelAll = () => setCancelout(!cancelout)
     
     setPaymentTime;
     setGreet;
+    
+    
 
    
 
     return(
         <>
         <Container>
-        {/* <ToastContainer /> */}
-            <PaymentFlex>
+        <motion.div
+animate={cancelout ? hide : ''}
 
-                <PaymentColor>
+>
+<PaymentFlex className="paymentscreenmode">
+
+                <PaymentColor className="paymentcolor">
                 <HomeApiAlt className="">
                      
                      <RequestDetails className="pb-5">
@@ -93,13 +143,13 @@ export  default function HomeApi() {
                                 Your payment request has been approved
                             </span>
 
-                            <Button >
+                            <Button onClick={CancelAll}>
                                 <MdOutlineCancelPresentation size="30"/>
                             </Button>
                            
                      </RequestDetails>
 
-                    <Paymentdetails>
+                    <Paymentdetails className="paymentdetails">
                         <DateReference>
                                 Payment issued on {paymenttime.toString().toLocaleUpperCase()}
                             </DateReference>
@@ -116,11 +166,18 @@ export  default function HomeApi() {
           
                
             </PaymentFlex>
-
+            </motion.div>
+            
             <GreetingTime>
                   {/* <Greeting GreetingDay={"Good Morning"}  GreetingNoon={"Good Afternoon"} GreetingNight={"Good Evening"} /> Emmanuel Umeh */}
-             <GreetingEveryday GreetingDay={"Good Morning"}  GreetingNoon={"Good Afternoon"} GreetingNight={"Good Evening"}/>, Emmanuel Umeh
+            
+                <div className="greetingtxt">
+                    <GreetingEveryday />, Emmanuel Umeh
+                </div>
+            
             </GreetingTime>
+
+            
         </Container>
         </>
     )

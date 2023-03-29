@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import {FiAlignJustify, FiXCircle} from 'react-icons/fi';
+// import HiOutlineMenuAlt3 from 'react-icons/hi';
+import { FiX , FiMenu }from 'react-icons/fi';
 import {MdOutlineDarkMode,MdOutlineLightMode} from 'react-icons/md';
+
 import { useState } from 'react';
+// import { Link } from 'react-router-dom';
 // import {BiMenuAltRight} from 'react-icons/bi';
 
 const Container = styled.div`
@@ -16,10 +19,23 @@ box-shadow: 0px 4px 30px 3px rgba(0, 0, 0, 0.25);
 .menubutton{
     display: block;
 }
+.userimage{
+    display: none;
+}
+
+.Switchtoggle{
+    display: none;
+}
+
+.userinfo{
+ display: none;   
+}
 
 .logo{
     width:30%;
 }
+
+
 }
 `;
 
@@ -84,12 +100,12 @@ function Navbar(user: Userdetails) {
 
                                       
 
-                    <UserInfoImg className='mr-2'>
+                    <UserInfoImg className="mr-2 userimage">
                         <img src={user.userImage} alt={user.UserAlt}/>
                     </UserInfoImg>
 
                        
-                          <UserInfoDetails>
+                          <UserInfoDetails className="userinfo">
                             <div className="font-bold">
                                     {user.userName}
                                 </div>
@@ -99,7 +115,7 @@ function Navbar(user: Userdetails) {
                                 </span>
                           </UserInfoDetails>
                         
-                    <Button  onClick={Handletoggle}>
+                    <Button className='Switchtoggle' onClick={Handletoggle}>
                        {
                         toggle
                         ?
@@ -114,9 +130,9 @@ function Navbar(user: Userdetails) {
                         {
                             menu
                             ?
-                            < FiXCircle size="28"/>
+                            < FiX size="28"/>
                             :
-                            <FiAlignJustify size="28"/>
+                            <FiMenu size="28"/>
                         }
                      </Button>
 
