@@ -3,24 +3,24 @@ import {MdOutlineCancelPresentation} from 'react-icons/md';
 import { useState } from "react";
 import GreetingEveryday from "./Greeting/GreetingEveryday";
 import { motion } from "framer-motion";
-// import Greeting from "./Greeting/Greeting";
-// import GreetingEveryday from "./Greeting/GreetingEveryday";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import CompanyRegImage from "../images/companyregister.svg"
 
 const Container = styled.div`
 padding-top: 140px;
-
+background: #EAF4F4;
+height: 100vh;
 .hidden{
     display: none;
 }
-
+.companyimage{
+    width: 18%;
+}
 @media (max-width: 500px) {
    
     .greetingtxt{
-        // display: none;
+       
         font-size: 15px;
-        font-weight: 500;
+        font-weight: 800;
         display: flex;
         justify-content: center;
      
@@ -100,6 +100,36 @@ font-weight: 500;
 
 `;
 
+const SpanDetails = styled.div`
+font-size: 15px;
+   margin-left: 320px;
+`;
+
+const CompanyRegister = styled.div`
+width: 40%;
+border-radius: 15px;
+background: #FFFFFF;
+// box-shadow: 0px 4px 30px 3px rgba(0, 0, 0, 0.25);
+margin-left: 320px;
+padding: 8px 8px 8px 8px;
+margin-top: 50px;
+
+`;
+
+
+const CompanyText = styled.div`
+display: flex;
+flex-direction: column;
+padding-left: 30px;
+`;
+
+const FlexWrapper = styled.div`
+display: flex;
+justify-content: center;
+`;
+const Companyparagraph = styled.div`
+
+`;
 const hide = {
     opacity: 0,
     transitionEnd: {
@@ -173,11 +203,37 @@ animate={cancelout ? hide : ''}
             
                 <div className="greetingtxt">
                     <GreetingEveryday GreetingDay="Good Morning" GreetingNoon="Good Afternoon" GreetingNight="Good Evening"/>, Emmanuel Umeh
+
                 </div>
             
             </GreetingTime>
 
-            
+            <SpanDetails>
+            <span>Hello, Mr Emma you are have been promoted as our senior developer.</span>
+            </SpanDetails>
+
+        <CompanyRegister>
+        
+        <FlexWrapper>
+
+                <div className="companyimage">
+                    <img src={CompanyRegImage} alt="companyregimage"/>
+                </div>
+
+        <CompanyText>
+ <div className="font-bold">
+      Company Register
+ </div>
+
+ <p>
+ keeping records of all our staffs,working  both locally and international..
+ </p>
+</CompanyText>
+        </FlexWrapper>
+
+
+        </CompanyRegister>
+
         </Container>
         </>
     )
